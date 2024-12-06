@@ -1,10 +1,9 @@
 import './App.css';
+import Enter from './components/Enter';
 
 function App() {
   return (
-    <div>
-      Enter
-    </div>
+    <Enter />
   );
 }
 
