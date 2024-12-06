@@ -1,12 +1,12 @@
 import React from "react";
-import EnterFooter from "./EnterFooter";
-import EnterForm from "./EnterForm";
+import Footer from "../generalComponents/Footer";
+import EnterForm from "./components/EnterForm";
 
 function Enter() {
     return (
         <>
             <EnterForm />
-            <EnterFooter />
+            <Footer />
         </>
     )
 }

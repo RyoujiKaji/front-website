@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class EnterFooter extends Component {
+class Footer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,4 +53,4 @@ class EnterFooter extends Component {
     }
 }
 
-export default EnterFooter
+export default Footer
