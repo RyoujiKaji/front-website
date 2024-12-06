@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
+import React,  { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DataContext } from '../../context/DataContext';
 
-class EnterForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      error: ''
-    };
-  }
+const EnterForm = () => {
+  const [email, setEmail] = useState(''); // Используем useState для управления состоянием
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { setData } = useContext(DataContext);
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'email') {
+      setEmail(value); // Обновляем состояние email
+    } else if (name === 'password') {
+      setPassword(value); // Обновляем состояние password
+    }
   };
 
-  handleSubmit = async (event) => { 
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
 
     if (password.length < 3) {
-      this.setState({ error: 'Неверная почта или пароль' });
+      setError('Неверная почта или пароль'); // Устанавливаем ошибку
       return;
     }
 
@@ -37,50 +40,48 @@ class EnterForm extends Component {
       }
 
       const data = await response.json(); //разобрать //получаем тело ответа в формате json объекта  */
-      
-      let data={
+      let data = {
         id: 1
-      }
+      };
+
       
-      
+      setData(data);
+      navigate('/test'); 
+
     } catch (error) {
-      this.setState({ error: error.message });
+      setError(error.message); // Устанавливаем ошибку
     }
   };
 
-  render() {
-    const { email, password, error } = this.state;
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>
+          Электронная почта:
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            required // обязательное поле
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Пароль:
+          <input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            required // обязательное поле
+          />
+        </label>
+      </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button type="submit">Войти</button>
+    </form>
+  );
+};
 
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>
-            Электронная почта:
-            <input
-              type="email"
-              name="email"
-              onChange={this.handleChange}
-              required //обязательное поле
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Пароль:
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleChange}
-              required //обязательное поле
-            />
-          </label>
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p> //разообрать
-        }
-        <button type="submit">Войти</button>
-      </form>
-    );
-  }
-}
+export default EnterForm; // Экспортируем компонент
 
-export default EnterForm;
