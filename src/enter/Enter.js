@@ -13,7 +13,7 @@ function Enter() {
     return (
     <>
         <EnterForm />
-        <p onClick={handleClick} style={{ color: 'blue' }}>Нет аккаунта? Зарегитрироваться</p>
+        <p onClick={handleClick} style={{ color: 'blue' }}>Нет аккаунта? Зарегиcтрироваться</p>
         <Footer />
     </>
     )

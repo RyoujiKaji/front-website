@@ -99,7 +99,7 @@ const RegistrationForm = () => {
 
             //setData(data);
             navigate('/');
-            alert("Регситрация успешно завершена. Войдите в аккаунт")
+            alert("Регистрация успешно завершена. Войдите в аккаунт")
 
         } catch (error) {
             setError(error.message); // Устанавливаем ошибку
