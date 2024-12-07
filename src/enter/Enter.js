@@ -4,9 +4,16 @@ import EnterForm from "./components/EnterForm";
 import { useNavigate } from 'react-router-dom';
 
 function Enter() {
+    const navigate = useNavigate();
+
+    const handleClick = () =>{
+        navigate("/registration")
+    }
+
     return (
     <>
         <EnterForm />
+        <p onClick={handleClick} style={{ color: 'blue' }}>Нет аккаунта? Зарегитрироваться</p>
         <Footer />
     </>
     )

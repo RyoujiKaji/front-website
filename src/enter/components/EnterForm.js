@@ -11,11 +11,16 @@ const EnterForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === 'email') {
-      setEmail(value); // Обновляем состояние email
-    } else if (name === 'password') {
-      setPassword(value); // Обновляем состояние password
-    }
+    switch (name){
+      case 'email':{
+          setEmail(value); // Обновляем состояние email
+          break;
+      }
+      case 'password':{
+          setPassword(value); // Обновляем состояние password
+          break;
+      }
+  }
   };
 
   const handleSubmit = async (event) => {
