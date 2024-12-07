@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import { DataContext } from '../context/DataContext';
+import { useAppContext } from '../context/DataContext';
 
 const Home = () => {
 
     const navigate = useNavigate();
+    const { data, setData } = useAppContext();
+    const userRole = data.role;
+    const userId = data.id;
 
-    /* const handleClick = () =>{
+    const handleClick = () => {
         navigate("/")
     }
- */
+
     return (
         <>
-        <p>Test home</p>
+            <p onClick={handleClick} style={{ color: 'blue' }}>{userId} {userRole}</p>
         </>
     )
 };

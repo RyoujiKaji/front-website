@@ -1,26 +1,26 @@
-import React,  { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataContext } from '../../context/DataContext';
+import { useAppContext } from '../../context/DataContext';
 
 const EnterForm = () => {
   const [email, setEmail] = useState(''); // Используем useState для управления состоянием
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { setData } = useContext(DataContext);
+  const { data, setData } = useAppContext();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    switch (name){
-      case 'email':{
-          setEmail(value); // Обновляем состояние email
-          break;
+    switch (name) {
+      case 'email': {
+        setEmail(value); // Обновляем состояние email
+        break;
       }
-      case 'password':{
-          setPassword(value); // Обновляем состояние password
-          break;
+      case 'password': {
+        setPassword(value); // Обновляем состояние password
+        break;
       }
-  }
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -45,13 +45,17 @@ const EnterForm = () => {
       }
 
       const data = await response.json(); //разобрать //получаем тело ответа в формате json объекта  */
-      let data = {
-        id: 1
+      let userData = {
+        id: 1,
+        role: 'user'
       };
 
-      
-      setData(data);
-      navigate('/test'); 
+
+      setData({
+        id: userData.id,
+        role: userData.role
+      });
+      navigate('/home');
 
     } catch (error) {
       setError(error.message); // Устанавливаем ошибку
