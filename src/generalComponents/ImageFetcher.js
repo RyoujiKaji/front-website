@@ -5,6 +5,8 @@ const ImageFetcher = (props) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const id=props.id
+
     useEffect(() => {
         const fetchImage = async () => {
             try {
@@ -38,7 +40,7 @@ const ImageFetcher = (props) => {
                 URL.revokeObjectURL(imageUrl);
             }
         };
-    }, [imageId]);
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;
