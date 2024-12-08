@@ -43,17 +43,22 @@ const PrivateInfo = (props) => {
     });
 
     const handleClick = (event) => {
-        navigate('/fixprivateinfo')
+        switch(event.target.name){
+            case 'privateInf': navigate('/fixprivateinfo'); break;
+            case 'avatar': navigate ('/changeAvatar'); break;
+            default: break;
+        }
     }
 
     //<ObtainedImage url='https://example.com/api/avatar' id={id}/>
     return (
         <div>
             <p>Ава добавить</p>
+            <button name='avatar' onClick={handleClick}>Изменить аватар</button>
             <p>Имя пользователя: {name}</p>
             <p>Дата рождения: {date}</p>
             <p>Электронная почта: {email}</p>
-            <button onClick={handleClick}>Изменить личные данные</button>
+            <button name='privateInf' onClick={handleClick}>Изменить личные данные</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );

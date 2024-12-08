@@ -9,6 +9,7 @@ import UserAccount from './accounts/userAccount/UserAccount';
 import ModerAccount from './accounts/moderAccount/ModerAccount';
 import AdminAccount from './accounts/adminAccount/AdminAccount';
 import FixPrivateInf from './accounts/general/FixPrivateInf';
+import ImageUploader from './accounts/general/ImageUpLoader';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,6 +24,7 @@ root.render(
                 <Route path="/moderAccount" element={<ModerAccount />} />
                 <Route path="/adminAccount" element={<AdminAccount />} />
                 <Route path="/fixprivateinfo" element={<FixPrivateInf />}/>
+                <Route path='/changeAvatar' element={<ImageUploader />}/>
             </Routes>
         </Router>
     </DataProvider>
