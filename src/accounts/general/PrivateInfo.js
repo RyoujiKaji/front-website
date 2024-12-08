@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ObtainedImage from '../../generalComponents/ObtainedImage';
+import ImageFetcher from '../../generalComponents/ImageFetcher';
 
 const PrivateInfo = (props) => {
     const [name, setName] = useState('');
