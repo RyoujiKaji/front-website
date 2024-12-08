@@ -8,6 +8,7 @@ import Home from './home/Home';
 import UserAccount from './accounts/userAccount/UserAccount';
 import ModerAccount from './accounts/moderAccount/ModerAccount';
 import AdminAccount from './accounts/adminAccount/AdminAccount';
+import FixPrivateInf from './accounts/general/FixPrivateInf';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,7 @@ root.render(
                 <Route path="/userAccount" element={<UserAccount />} />
                 <Route path="/moderAccount" element={<ModerAccount />} />
                 <Route path="/adminAccount" element={<AdminAccount />} />
+                <Route path="/fixprivateinfo" element={<FixPrivateInf />}/>
             </Routes>
         </Router>
     </DataProvider>

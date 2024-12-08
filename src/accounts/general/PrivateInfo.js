@@ -9,6 +9,8 @@ const PrivateInfo = (props) => {
     const [error, setError] = useState('');
     const [id, setId] = useState(props.id);
 
+    const navigate=useNavigate();
+
     useEffect(() => {
         try {
             /* const response = fetch('https://example.com/api/privateinf', { // Замените на Ваш API //await - без ответа действие не продолжится
@@ -27,7 +29,7 @@ const PrivateInfo = (props) => {
 
             let data = {
                 name: 'Jon',
-                date: "25.03.2005",
+                date: "2005-03-01",
                 email: 'mail@gmail.com'
             }
 
@@ -41,21 +43,17 @@ const PrivateInfo = (props) => {
     });
 
     const handleClick = (event) => {
-        switch(event.target.name){
-            case 'name':{
-
-                return;
-            }
-        }
+        navigate('/fixprivateinfo')
     }
 
     //<ObtainedImage url='https://example.com/api/avatar' id={id}/>
     return (
         <div>
             <p>Ава добавить</p>
-            <p>Имя пользователя: {name} <button onClick={handleClick} name='name'>Исправить</button></p>
+            <p>Имя пользователя: {name}</p>
             <p>Дата рождения: {date}</p>
             <p>Электронная почта: {email}</p>
+            <button onClick={handleClick}>Изменить личные данные</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
