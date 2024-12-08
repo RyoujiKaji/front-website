@@ -46,8 +46,11 @@ const FixPrivateInf = () => {
                 email: 'mail@gmail.com'
             }
 
+            setName(data.name);
             setOldName(data.name);
+            setDate(data.date);
             setOldDate(data.date);
+            setEmail(data.email);
             setOldEmail(data.email);
 
         } catch (error) {
@@ -94,8 +97,19 @@ const FixPrivateInf = () => {
         //обработка запроса 
         try {
 
-            if (oldName === name || oldDate === date || oldEmail === email) {
+            if (oldName === name && oldDate === date && oldEmail === email) {
                 throw new Error('Новые данные совпадают со старыми');
+            }
+
+            let modifierData={};
+            if(oldName !== name){
+                modifierData.name=name;
+            }
+            if(oldDate !== date){
+                modifierData.date=date;
+            }
+            if(oldEmail !== email){
+                modifierData.email=email;
             }
 
             /* const response = await fetch('https://example.com/api/fixprivateinf', { // Замените на Ваш API //await - без ответа действие не продолжится
@@ -103,7 +117,7 @@ const FixPrivateInf = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, date, email, id }),
+                body: JSON.stringify(modifierData),
             });
 
             if (!response.ok) {
