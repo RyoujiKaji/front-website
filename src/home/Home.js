@@ -1,13 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/DataContext';
+import Footer from '../generalComponents/Footer'
+import Header from './components/Header';
 
 const Home = () => {
 
     const navigate = useNavigate();
-    const { data, setData } = useAppContext();
+
+    //Берем ID и роль пользователя из контекста
+    const data= useAppContext().data;
     const userRole = data.role;
-    const userId = data.id;
 
     const handleClick = () => {
         navigate("/")
@@ -15,7 +18,8 @@ const Home = () => {
 
     return (
         <>
-            <p onClick={handleClick} style={{ color: 'blue' }}>{userId} {userRole}</p>
+            <Header role={userRole} />
+            <Footer />
         </>
     )
 };

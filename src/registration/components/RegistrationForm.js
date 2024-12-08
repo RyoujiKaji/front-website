@@ -45,6 +45,7 @@ const RegistrationForm = () => {
                 setRepeatPassword(value); // Обновляем состояние
                 break;
             }
+            default: break;
         }
     };
 

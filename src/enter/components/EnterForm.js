@@ -37,7 +37,7 @@ const EnterForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       if (!response.ok) {
@@ -50,11 +50,11 @@ const EnterForm = () => {
         role: 'user'
       };
 
-
       setData({
         id: userData.id,
         role: userData.role
       });
+
       navigate('/home');
 
     } catch (error) {
