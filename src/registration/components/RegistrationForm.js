@@ -185,7 +185,7 @@ const RegistrationForm = () => {
                 </label>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <button type="submit">Войти</button>
+            <button type="submit">Зарегистироваться</button>
         </form>
     );
 };
