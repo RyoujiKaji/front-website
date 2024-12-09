@@ -25,37 +25,36 @@ const FixPrivateInf = () => {
 
     //получение исходных данных
     useEffect(() => {
-        try {
-            /* const response = fetch('https://example.com/api/privateinf', { // Замените на Ваш API //await - без ответа действие не продолжится
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id })
-            });
+        const fetchData = async () => { // Оберните в асинхронную функцию
+            try {
+                const response = await fetch('http://localhost:8080/users/privateinfo', { // Добавьте await
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id })
+                });
 
-            if (!response.ok) {
-                throw new Error('Ошибка получения данных');
+                if (!response.ok) { // Проверьте статус ответа
+                    throw new Error('Ошибка запроса');
+                }
+
+                const userData = await response.json(); // Добавьте await для разбора JSON
+                console.log(userData);
+
+                setName(userData.name);
+                setOldName(userData.name);
+                setDate(userData.date);
+                setOldDate(userData.date);
+                setEmail(userData.email);
+                setOldEmail(userData.email);
+
+            } catch (error) {
+                setError(error.message);
             }
+        };
 
-            const data = response.json(); */
-
-            let data = {
-                name: 'Jon',
-                date: "2005-03-01",
-                email: 'mail@gmail.com'
-            }
-
-            setName(data.name);
-            setOldName(data.name);
-            setDate(data.date);
-            setOldDate(data.date);
-            setEmail(data.email);
-            setOldEmail(data.email);
-
-        } catch (error) {
-            setError(error.message);
-        }
+        fetchData(); // Вызовите асинхронную функцию
     }, []);
 
     //Обработка ввода информации в поля
@@ -100,24 +99,25 @@ const FixPrivateInf = () => {
             if (oldName === name && oldDate === date && oldEmail === email) {
                 throw new Error('Новые данные совпадают со старыми');
             }
+            /* 
+                        let modifierData = {
+                            name: name,
+                            date: date,
+                            email: email,
+                            id: id
+                        }; */
 
-            let modifierData={};
-            if(oldName !== name){
-                modifierData.name=name;
-            }
-            if(oldDate !== date){
-                modifierData.date=date;
-            }
-            if(oldEmail !== email){
-                modifierData.email=email;
-            }
-
-            /* const response = await fetch('https://example.com/api/fixprivateinf', { // Замените на Ваш API //await - без ответа действие не продолжится
+            const response = await fetch('http://localhost:8080/users/fixprivateinfo', { // Замените на Ваш API //await - без ответа действие не продолжится
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(modifierData),
+                body: JSON.stringify({
+                    name: name,
+                    date: date,
+                    email: email,
+                    id: id
+                }),
             });
 
             if (!response.ok) {
@@ -125,11 +125,10 @@ const FixPrivateInf = () => {
             }
 
             const data = await response.json(); //разобрать //получаем тело ответа в формате json объекта  
- */
-            let data = {
+            /* let data = {
                 success: true,
                 error: 'У вас уже есть аккаунт, зарегистрированный на эту почту'
-            }
+            } */
 
             if (!data.success) {
                 throw new Error(data.error);
