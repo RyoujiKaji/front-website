@@ -32,30 +32,32 @@ const EnterForm = () => {
     }
 
     try {
-       const response = await fetch('http://localhost:8080/db/enter', { // Замените на Ваш API //await - без ответа действие не продолжится
+       const response = await fetch('http://localhost:8080/users/enter', { // Замените на Ваш API //await - без ответа действие не продолжится
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email: email, password: password })
       });
 
       if (!response.ok) {
-        throw new Error('Неверная почта или пароль');
+        throw new Error('Ошибка запроса');
       }
 
+      //setError(response.json());
       const userData = await response.json(); //разобрать //получаем тело ответа в формате json объекта  
-      /* let userData = {
-        id: 1,
-        role: 'user'
-      };
- */
+      console.log(userData);
+       if(!userData.success){
+        setError("Неверная почта или пароль");
+        return;
+      }
+
       setData({
         id: userData.id,
         role: userData.role
       });
 
-      navigate('/home');
+      navigate('/home'); 
 
     } catch (error) {
       setError(error.message); // Устанавливаем ошибку
