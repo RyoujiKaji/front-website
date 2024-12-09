@@ -89,13 +89,30 @@ const RegistrationForm = () => {
 
             const data = await response.json(); //разобрать //получаем тело ответа в формате json объекта  
  */
-            let data={
-                success: true, 
-                error: 'У вас уже есть аккаунт, зарегистрированный на эту почту'
+            const response = await fetch('http://localhost:8080/users/registration', { // Замените на Ваш API //await - без ответа действие не продолжится
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: 0,
+                    name: name,
+                    date: date,
+                    image: null,
+                    role: "user",
+                    email: email, 
+                    password: password })
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка запроса');
             }
-            
-            if(!data.success){
-                throw new Error(data.error);
+
+            //setError(response.json());
+            const userData = await response.json(); //разобрать //получаем тело ответа в формате json объекта  
+            console.log(userData);
+            if (!userData.success) {
+                throw new Error(userData.error);
             }
 
             //setData(data);
