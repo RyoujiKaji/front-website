@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ImageUploader = (props) => {
+const ImageUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -22,7 +22,7 @@ const ImageUploader = (props) => {
       formData.append('image', blob, selectedFile.name);
 
       // Отправляем запрос на сервер
-      const response = await fetch(props.way, {
+      const response = await fetch('http://localhost:8080/users/fixavatar', {
         method: 'POST',
         body: formData,
       });

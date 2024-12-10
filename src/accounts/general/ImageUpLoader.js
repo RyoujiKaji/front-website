@@ -27,11 +27,11 @@ const ImageUploader = () => {
 
       // Создаем FormData для отправки файла
       const formData = new FormData();
-      formData.append('image', selectedFile.name);
+      formData.append('image', selectedFile);
       formData.append('id', id);
 
       // Отправляем запрос на сервер
-      const response = await fetch('путь к api авы', {
+      const response = await fetch('http://localhost:8080/users/fixavatar', {
         method: 'POST',
         body: formData,
       });
@@ -41,7 +41,14 @@ const ImageUploader = () => {
       }
 
       const result = await response.json();
-      console.log('Успешно загружено:', result); //обработать ответ
+
+      if (!result.success) {
+        throw new Error(result.error);
+      }
+
+      navigate('/' + userRole + 'account');
+      alert("Данные успешно изменены")
+      //console.log('Успешно загружено:', result); //обработать ответ
     } catch (error) {
       setError(error.message);
     }
@@ -53,7 +60,7 @@ const ImageUploader = () => {
 
   return (
     <div>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <input type="file" accept="image/jpeg" onChange={handleFileChange} />
       <button onClick={handleUpload}>Загрузить изображение</button>
       <button onClick={handleReturnClick}>Вернуться в личный кабинет</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
