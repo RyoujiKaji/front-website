@@ -42,10 +42,13 @@ const FixPrivateInf = () => {
                 const userData = await response.json(); // Добавьте await для разбора JSON
                 console.log(userData);
 
+                const partDate=userData.date.split('-');
+                const newFormatDate = partDate[2]+'.'+partDate[1]+'.'+partDate[0];
+
                 setName(userData.name);
                 setOldName(userData.name);
-                setDate(userData.date);
-                setOldDate(userData.date);
+                setDate(newFormatDate);
+                setOldDate(newFormatDate);
                 setEmail(userData.email);
                 setOldEmail(userData.email);
 
@@ -96,7 +99,10 @@ const FixPrivateInf = () => {
         //обработка запроса 
         try {
 
-            if (oldName === name && oldDate === date && oldEmail === email) {
+            const partDate=date.split('-');
+            const newFormatDate = partDate[2]+'.'+partDate[1]+'.'+partDate[0];
+
+            if (oldName === name && oldDate === newFormatDate && oldEmail === email) {
                 throw new Error('Новые данные совпадают со старыми');
             }
             /* 

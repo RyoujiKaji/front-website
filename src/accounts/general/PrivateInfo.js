@@ -30,8 +30,11 @@ const PrivateInfo = () => {
                 const userData = await response.json(); // Добавьте await для разбора JSON
                 console.log(userData);
 
+                const partDate=userData.date.split('-');
+                const newFormatDate = partDate[2]+'.'+partDate[1]+'.'+partDate[0];
+
                 setName(userData.name);
-                setDate(userData.date);
+                setDate(newFormatDate);
                 setEmail(userData.email);
 
             } catch (error) {
