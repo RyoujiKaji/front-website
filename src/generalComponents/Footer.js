@@ -1,56 +1,45 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react';
 
-class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            visits: 0,
-            date: "",
-            error: ''
-        };
-    }
+const Footer = () => {
+    const [visits, setVisits] = useState(0);
+    const [date, setDate] = useState("");
+    const [error, setError] = useState('');
 
-    componentDidMount() {
-        try {
-            /*  const response = fetch('https://example.com/api/visitsanddate', { // Замените на Ваш API //await - без ответа действие не продолжится
-               method: 'POST'
-             });
-       
-             if (!response.ok) {
-               throw new Error('Ошибка получения данных');
-             } 
-       
-             const data = response.json();
-             */
-            let data = {
-                visits: 12,
-                date: "06.12.2024"
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/general/footer', { // Замените на Ваш API
+                    method: 'POST'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка получения данных');
+                }
+
+                const data = await response.json();
+
+                setVisits(data.visits);
+                setDate(data.date);
+
+            } catch (error) {
+                setError(error.message);
             }
+        };
 
-            this.setState({
-                visits: data.visits,
-                date: data.date
-            });
+        fetchData();
+    }, []); // Пустой массив зависимостей для выполнения только при монтировании
 
-        } catch (error) {
-            this.setState({ error: error.message });
-        }
-    }
+    return (
+        <div>
+            <p>
+                Посещений: {visits}
+            </p>
+            <p>
+                Сегодня: {date}
+            </p>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+        </div>
+    );
+};
 
-    render() {
-        const { visits, date, error } = this.state;
-        return (
-            <div>
-                <p>
-                    Посещений: {visits}
-                </p>
-                <p>
-                    Сегодня: {date}
-                </p>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-            </div>
-        );
-    }
-}
-
-export default Footer
+export default Footer;
