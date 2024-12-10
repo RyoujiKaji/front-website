@@ -6,28 +6,33 @@ const Footer = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:8080/general/footer', { // Замените на Ваш API
-                    method: 'POST'
-                });
+        const interval = setInterval(() => {
 
-                if (!response.ok) {
-                    throw new Error('Ошибка получения данных');
+            const fetchData = async () => {
+                try {
+                    const response = await fetch('http://localhost:8080/general/footer', { // Замените на Ваш API
+                        method: 'POST'
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Ошибка получения данных');
+                    }
+
+                    const data = await response.json();
+
+                    setVisits(data.visits);
+                    setDate(data.date);
+
+                } catch (error) {
+                    setError(error.message);
                 }
-
-                const data = await response.json();
-
-                setVisits(data.visits);
-                setDate(data.date);
-
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
-        fetchData();
-    }, []); // Пустой массив зависимостей для выполнения только при монтировании
+            };
+            fetchData();
+            const interval = setInterval(() => {
+                fetchData();
+            }, 1000)
+        }, 1000)
+    },);
 
     return (
         <div>

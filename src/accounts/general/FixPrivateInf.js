@@ -107,7 +107,7 @@ const FixPrivateInf = () => {
                             id: id
                         }; */
 
-            const response = await fetch('http://localhost:8080/users/fixprivateinfo', { // Замените на Ваш API //await - без ответа действие не продолжится
+            const response = await fetch('http://localhost:8080/users/fixprivateinfo', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
