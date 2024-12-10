@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ImageFetcher from '../../generalComponents/ImageFetcher';
+import ImageFetcher from './ImageFetcher';
 import { useAppContext } from '../../context/DataContext';
 
 const PrivateInfo = () => {
@@ -54,6 +54,7 @@ const PrivateInfo = () => {
     return (
         <div>
             <p>Ава добавить</p>
+            <ImageFetcher />
             <button name='avatar' onClick={handleClick}>Изменить аватар</button>
             <p>Имя пользователя: {name}</p>
             <p>Дата рождения: {date}</p>
