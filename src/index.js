@@ -11,6 +11,7 @@ import AdminAccount from './accounts/adminAccount/AdminAccount';
 import FixPrivateInf from './accounts/general/FixPrivateInf';
 import ImageUploader from './accounts/general/ImageUpLoader';
 import AllUserTable from './accounts/adminAccount/components/AllUsersTable';
+import FixRole from './accounts/adminAccount/components/FixRole';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +28,7 @@ root.render(
                 <Route path="/fixprivateinfo" element={<FixPrivateInf />}/>
                 <Route path='/changeAvatar' element={<ImageUploader />}/>
                 <Route path='/allUsersTable' element={<AllUserTable />}/>
+                <Route path='/changerole' element={<FixRole />}/>
             </Routes>
         </Router>
     </DataProvider>

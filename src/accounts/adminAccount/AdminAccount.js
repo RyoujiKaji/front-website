@@ -12,15 +12,17 @@ const AdminAccount = () => {
     const data = useAppContext().data;
     const userId = data.id;
 
-    const handleClickEdit = ()=>{
+    const handleClickEdit = () => {
         navigate("/alluserstable")
     }
 
     return (
         <>
-        <Header role={'admin'} />
-        <PrivateInfo id={userId}/>
-        <button onClick={handleClickEdit}>Редактировать пользователей</button>
+            <Header role={'admin'} />
+            <PrivateInfo id={userId} />
+            <p>
+                <button onClick={handleClickEdit}>Редактировать пользователей</button>
+            </p>
         </>
     )
 };
