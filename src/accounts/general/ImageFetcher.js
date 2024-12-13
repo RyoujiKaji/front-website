@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/DataContext';
 
-const ImageFetcher = () => {
+const ImageFetcher = (props) => {
     const [imageUrl, setImageUrl] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [id, setId]= useState(props.id);
 
     const contData = useAppContext().data;
-    const id = contData.id;
+    //const id = contData.id;
 
     useEffect(() => {
         const fetchImage = async () => {
@@ -21,7 +22,7 @@ const ImageFetcher = () => {
                 });
 
                 if (response.status === 404) {
-                    throw new Error('У Вас нет аватара');
+                    throw new Error('Изображение отсутствует');
                 }
     
                 if (!response.ok) {

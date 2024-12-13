@@ -49,7 +49,7 @@ const PrivateInfo = (props) => {
     const handleClick = (event) => {
         switch (event.target.name) {
             case 'privateInf': navigate('/fixprivateinfo', { state: { id: id } }); break;
-            case 'avatar': navigate('/changeAvatar'); break;
+            case 'avatar': navigate('/changeAvatar', { state: { id: id } }); break;
             default: break;
         }
     }
@@ -57,7 +57,7 @@ const PrivateInfo = (props) => {
     //<ObtainedImage url='https://example.com/api/avatar' id={id}/>
     return (
         <div>
-            <ImageFetcher />
+            <ImageFetcher id={id}/>
             <button name='avatar' onClick={handleClick}>Изменить аватар</button>
             <p>Имя пользователя: {name}</p>
             <p>Дата рождения: {date}</p>

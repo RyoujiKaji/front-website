@@ -10,7 +10,7 @@ const FixPrivateInf = () => {
     const [error, setError] = useState('');
     const [errorDate, setErrorDate] = useState('');
     const { state } = useLocation();
-    const {id} = state;
+    const { id } = state;
     //const [id, setId] = useState(props.id);
     // setId(pid);
     //const [userRole, setUserRole] = useState('');
@@ -144,7 +144,8 @@ const FixPrivateInf = () => {
             }
 
             //setData(data);
-            navigate('/' + userRole + 'account');
+            // navigate('/' + userRole + 'account');
+            navigate(-1);
             alert("Данные успешно изменены")
 
         } catch (error) {
@@ -153,7 +154,7 @@ const FixPrivateInf = () => {
     };
 
     const handleReturnClick = () => {
-        navigate('/' + userRole + 'account');
+        navigate(-1);
     }
 
     //Создание компонента
@@ -197,7 +198,7 @@ const FixPrivateInf = () => {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Изменить</button>
             </form>
-            <button onClick={handleReturnClick}>Вернуться в личный кабинет</button>
+            <button onClick={handleReturnClick}>Вернуться</button>
         </>
     );
 };

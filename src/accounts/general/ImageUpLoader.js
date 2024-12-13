@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppContext } from '../../context/DataContext';
 
 const ImageUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState('');
+  const { state } = useLocation();
+  const { id } = state;
 
   const navigate = useNavigate();
   const data = useAppContext().data
-  const id = data.id;
+  // const id = data.id;
   const userRole = data.role;
 
   const handleFileChange = (event) => {
@@ -25,7 +27,7 @@ const ImageUploader = () => {
       // Преобразуем файл в Blob
       const blob = new Blob([selectedFile]);
       const MAX_SIZE_OF_FILE = 70000;
-      if(blob.size>=MAX_SIZE_OF_FILE){
+      if (blob.size >= MAX_SIZE_OF_FILE) {
         throw new Error('Размер выбранного файла слишком большой');
       }
 
@@ -50,7 +52,7 @@ const ImageUploader = () => {
         throw new Error(result.error);
       }
 
-      navigate('/' + userRole + 'account');
+      navigate(-1);
       alert("Данные успешно изменены")
       //console.log('Успешно загружено:', result); //обработать ответ
     } catch (error) {
@@ -59,14 +61,14 @@ const ImageUploader = () => {
   };
 
   const handleReturnClick = () => {
-    navigate('/' + userRole + 'account');
+    navigate(-1);
   }
 
   return (
     <div>
       <input type="file" accept="image/jpeg" onChange={handleFileChange} />
       <button onClick={handleUpload}>Загрузить изображение</button>
-      <button onClick={handleReturnClick}>Вернуться в личный кабинет</button>
+      <button onClick={handleReturnClick}>Вернуться</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
