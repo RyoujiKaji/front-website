@@ -28,7 +28,13 @@ const RegistrationForm = () => {
             }
             case 'date': {
                 setErrorDate('');
-                setDate(value); // Обновляем состояние
+                if (value === "") {
+                    break;
+                }
+                const partDate = value.split('-');
+                const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
+                //setDate(newFormatDate);
+                setDate(newFormatDate); // Обновляем состояние
                 break;
             }
             case 'email': {
@@ -100,8 +106,9 @@ const RegistrationForm = () => {
                     date: date,
                     image: null,
                     role: "user",
-                    email: email, 
-                    password: password })
+                    email: email,
+                    password: password
+                })
             });
 
             if (!response.ok) {

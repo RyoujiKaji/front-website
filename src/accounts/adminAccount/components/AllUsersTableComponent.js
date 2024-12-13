@@ -9,11 +9,8 @@ const AllUsersTableComponent = (props) => {
     /*const data = useAppContext().data;
     const userId = data.id; */
 
-    const partDate = props.date.split('-');
-    const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
-
     const [name, setName] = useState(props.name);
-    const [date, setDate] = useState(newFormatDate);
+    const [date, setDate] = useState(props.date);
     const [email, setEmail] = useState(props.email);
     const [id, setId] = useState(props.id);
     const [role, setRole] = useState(props.role);

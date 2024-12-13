@@ -45,13 +45,10 @@ const FixPrivateInf = () => {
                 const userData = await response.json(); // Добавьте await для разбора JSON
                 console.log(userData);
 
-                const partDate = userData.date.split('-');
-                const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
-
                 setName(userData.name);
                 setOldName(userData.name);
-                setDate(newFormatDate);
-                setOldDate(newFormatDate);
+                setDate(userData.date);
+                setOldDate(userData.date);
                 setEmail(userData.email);
                 setOldEmail(userData.email);
 
@@ -69,15 +66,30 @@ const FixPrivateInf = () => {
 
         switch (name) {
             case 'name': {
+                if (value === "") {
+                    setName(oldName);
+                    break;
+                }
                 setName(value); // Обновляем состояние 
                 break;
             }
             case 'date': {
                 setErrorDate('');
-                setDate(value); // Обновляем состояние
+                if (value === "") {
+                    setDate(oldDate);
+                    break;
+                }
+                const partDate = value.split('-');
+                const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
+                //setDate(newFormatDate);
+                setDate(newFormatDate); // Обновляем состояние
                 break;
             }
             case 'email': {
+                if (value === "") {
+                    setEmail(oldEmail);
+                    break;
+                }
                 setEmail(value); // Обновляем состояние email
                 break;
             }
@@ -99,22 +111,27 @@ const FixPrivateInf = () => {
             return;
         }
 
+
         //обработка запроса 
         try {
 
-            const partDate = date.split('-');
-            const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
+            // console.log(date);
 
-            if (oldName === name && oldDate === newFormatDate && oldEmail === email) {
+            if (oldName === name && oldDate === date && oldEmail === email) {
                 throw new Error('Новые данные совпадают со старыми');
             }
-            /* 
-                        let modifierData = {
-                            name: name,
-                            date: date,
-                            email: email,
-                            id: id
-                        }; */
+           /*  console.log(name)
+            if (name === "") {
+                console.log("!!!!!!!")
+                setName(oldName);
+            }
+            if (date === "") {
+                setDate(oldDate);
+            }
+            if (email === "") {
+                setEmail(oldEmail);
+            } */
+
 
             const response = await fetch('http://localhost:8080/users/fixprivateinfo', {
                 method: 'POST',
@@ -143,6 +160,7 @@ const FixPrivateInf = () => {
                 throw new Error(data.error);
             }
 
+
             //setData(data);
             // navigate('/' + userRole + 'account');
             navigate(-1);
@@ -159,7 +177,7 @@ const FixPrivateInf = () => {
 
     //Создание компонента
     return (
-        <div class = "fixprivateinf">
+        <div class="fixprivateinf">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
