@@ -155,7 +155,7 @@ const FixPrivateInf = () => {
 
     //Создание компонента
     return (
-        <>
+        <div class = "fixprivateinf">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
@@ -168,6 +168,7 @@ const FixPrivateInf = () => {
                         />
                     </label>
                 </div>
+                <p></p>
                 <div>
                     <label>
                         Дата рождения:
@@ -180,6 +181,7 @@ const FixPrivateInf = () => {
                         {errorDate && <p style={{ color: 'red' }}>{errorDate}</p>}
                     </label>
                 </div>
+                <p></p>
                 <div>
                     <label>
                         Электронная почта:
@@ -192,10 +194,11 @@ const FixPrivateInf = () => {
                     </label>
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Изменить</button>
+                <p></p>
+                <button type="submit">Изменить</button><p></p>
             </form>
             <button onClick={handleReturnClick}>Вернуться в личный кабинет</button>
-        </>
+        </div>
     );
 };
 

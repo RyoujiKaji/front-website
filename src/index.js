@@ -10,6 +10,7 @@ import ModerAccount from './accounts/moderAccount/ModerAccount';
 import AdminAccount from './accounts/adminAccount/AdminAccount';
 import FixPrivateInf from './accounts/general/FixPrivateInf';
 import ImageUploader from './accounts/general/ImageUpLoader';
+import './index.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

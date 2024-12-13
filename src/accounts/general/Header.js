@@ -36,12 +36,12 @@ const Header = (props) => {
     }
 
     return (
-       <>
-       <label>Игровой портал: личный кабинет {userRole()} </label>
+       <div class = "header">
+       <label>Игровой портал: личный кабинет {userRole()} </label><p></p>
        <button onClick={handleClick} name='news'>Новости</button>
-       <button onClick={handleClick} name='home'>Домашняя страница</button>
+       <button onClick={handleClick} name='home'>Домашняя страница</button><p></p>
        <button onClick={handleClick} name='exit'>Выйти из личного кабинета</button>
-       </>
+       </div>
     )
 };
 

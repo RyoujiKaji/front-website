@@ -1,0 +1,83 @@
+body {
+  background-color: Moccasin;
+}
+
+.header {
+  text-align: right;
+}
+
+.footer {
+  text-align: left;
+  left: 10px;
+  bottom: 10px;
+  position: fixed;
+}
+
+.fixprivateinf {
+  text-align: center;
+  background: white;
+  border: solid 1px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 250px;
+  padding-top: 20px;
+}
+
+.privateinfo {
+  text-align: center;
+  background: white;
+  border: solid 1px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 350px;
+  height: 500px;
+  padding-top: 20px;
+}
+
+.image {
+  width: 150px;
+}
+
+.enter {
+  text-align: center;
+  background: white;
+  border: solid 1px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 300px;
+  padding-top: 20px;
+}
+
+.registration {
+  text-align: center;
+  background: white;
+  border: solid 1px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 350px;
+  padding-top: 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

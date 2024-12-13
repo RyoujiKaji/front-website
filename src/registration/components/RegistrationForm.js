@@ -138,6 +138,7 @@ const RegistrationForm = () => {
                     />
                 </label>
             </div>
+            <p></p>
             <div>
                 <label>
                     Дата рождения:
@@ -150,6 +151,7 @@ const RegistrationForm = () => {
                     {errorDate && <p style={{ color: 'red' }}>{errorDate}</p>}
                 </label>
             </div>
+            <p></p>
             <div>
                 <label>
                     Электронная почта:
@@ -161,6 +163,7 @@ const RegistrationForm = () => {
                     />
                 </label>
             </div>
+            <p></p>
             <div>
                 <label>
                     Пароль:
@@ -173,6 +176,7 @@ const RegistrationForm = () => {
                 </label>
                 {errorPassword && <p style={{ color: 'red' }}>{errorPassword}</p>}
             </div>
+            <p></p>
             <div>
                 <label>
                     Повторите пароль:
@@ -185,6 +189,7 @@ const RegistrationForm = () => {
                 </label>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p></p>
             <button type="submit">Зарегистироваться</button>
         </form>
     );

@@ -92,6 +92,7 @@ const EnterForm = () => {
             />
           </label>
         </div>
+        <p></p>
         <div>
           <label>
             Пароль:
@@ -104,6 +105,7 @@ const EnterForm = () => {
           </label>
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        <p></p>
         <button type="submit">Войти</button>
       </form>
     );
