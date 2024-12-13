@@ -42,15 +42,17 @@ const AllUserTable = () => {
     }
 
     return (
+        <>
+        <p>
+            <button style = {{left : '10px'}} onClick={handleReturnClick}>Вернуться в личный кабинет</button>
+        </p>
         <div style={{ padding: '10px' }}>
             <div>
                 {allUsersTableComponentsArray}
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <p>
-                <button onClick={handleReturnClick}>Вернуться в личный кабинет</button>
-            </p>
         </div>
+        </>
     )
 };
 

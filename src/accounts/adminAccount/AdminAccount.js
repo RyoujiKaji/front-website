@@ -20,9 +20,9 @@ const AdminAccount = () => {
         <>
             <Header role={'admin'} />
             <PrivateInfo id={userId} />
-            <p>
+            <div class = "header"><p></p>
                 <button onClick={handleClickEdit}>Редактировать пользователей</button>
-            </p>
+            </div>
         </>
     )
 };
