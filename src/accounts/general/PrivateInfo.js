@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import ImageFetcher from './ImageFetcher';
 import { useAppContext } from '../../context/DataContext';
 
-const PrivateInfo = () => {
+const PrivateInfo = (props) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+    const [id, setId] = useState(props.id);
 
     const navigate = useNavigate();
     const contData = useAppContext().data;
@@ -20,7 +21,7 @@ const PrivateInfo = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ id: contData.id })
+                    body: JSON.stringify({ id: id })
                 });
 
                 if (!response.ok) { // Проверьте статус ответа
@@ -47,8 +48,8 @@ const PrivateInfo = () => {
 
     const handleClick = (event) => {
         switch (event.target.name) {
-            case 'privateInf': navigate('/fixprivateinfo'); break;
-            case 'avatar': navigate('/changeAvatar'); break;
+            case 'privateInf': navigate('/fixprivateinfo', { state: { id: id } }); break;
+            case 'avatar': navigate('/changeAvatar', { state: { id: id } }); break;
             default: break;
         }
     }
@@ -56,7 +57,7 @@ const PrivateInfo = () => {
     //<ObtainedImage url='https://example.com/api/avatar' id={id}/>
     return (
         <div class = "privateinfo">
-            <ImageFetcher />
+            <ImageFetcher id={id}/>
             <button name='avatar' onClick={handleClick}>Изменить аватар</button>
             <p>Имя пользователя: {name}</p>
             <p>Дата рождения: {date}</p>

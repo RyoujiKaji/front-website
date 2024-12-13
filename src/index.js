@@ -10,6 +10,8 @@ import ModerAccount from './accounts/moderAccount/ModerAccount';
 import AdminAccount from './accounts/adminAccount/AdminAccount';
 import FixPrivateInf from './accounts/general/FixPrivateInf';
 import ImageUploader from './accounts/general/ImageUpLoader';
+import AllUserTable from './accounts/adminAccount/components/AllUsersTable';
+import FixRole from './accounts/adminAccount/components/FixRole';
 import './index.css';
 
 
@@ -26,6 +28,8 @@ root.render(
                 <Route path="/adminAccount" element={<AdminAccount />} />
                 <Route path="/fixprivateinfo" element={<FixPrivateInf />}/>
                 <Route path='/changeAvatar' element={<ImageUploader />}/>
+                <Route path='/allUsersTable' element={<AllUserTable />}/>
+                <Route path='/changerole' element={<FixRole />}/>
             </Routes>
         </Router>
     </DataProvider>

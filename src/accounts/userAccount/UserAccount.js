@@ -6,7 +6,7 @@ import PrivateInfo from '../general/PrivateInfo';
 
 const UserAccount = () => {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     //Получаем из контекста id пользователя
     const data = useAppContext().data;
     const userId = data.id;
