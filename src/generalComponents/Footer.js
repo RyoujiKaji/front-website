@@ -28,14 +28,14 @@ const Footer = () => {
         fetchData();
         const interval = setInterval(() => {
             fetchData();
-        }, 10000)
+        }, 1000)
         return () => {
             clearInterval(interval);
         };
     },);
 
     return (
-        <div>
+        <div class = "footer">
             <p>
                 Посещений: {visits}
             </p>

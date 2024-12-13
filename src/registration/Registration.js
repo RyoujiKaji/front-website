@@ -14,9 +14,11 @@ const Registration = () => {
 
     return (
         <>
+            <div class = "registration">
             <RegistrationForm />
             <p onClick={handleClick} style={{ color: 'blue' }}>Есть аккаунт? Войти</p>
             <Footer />
+            </div>
         </>
     )
 };

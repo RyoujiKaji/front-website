@@ -56,7 +56,7 @@ const PrivateInfo = (props) => {
 
     //<ObtainedImage url='https://example.com/api/avatar' id={id}/>
     return (
-        <div>
+        <div class = "privateinfo">
             <ImageFetcher id={id}/>
             <button name='avatar' onClick={handleClick}>Изменить аватар</button>
             <p>Имя пользователя: {name}</p>

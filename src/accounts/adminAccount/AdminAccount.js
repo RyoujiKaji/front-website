@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/DataContext';
 import Header from '../general/Header';
 import PrivateInfo from '../general/PrivateInfo';
-//import { DataContext } from '../context/DataContext';
+
 
 const AdminAccount = () => {
 

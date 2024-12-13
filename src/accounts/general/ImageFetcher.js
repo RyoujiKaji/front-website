@@ -62,7 +62,7 @@ const ImageFetcher = (props) => {
 
     return (
         <div>
-            {imageUrl ? <img src={imageUrl} alt={`Image`} /> : <div>No image found</div>}
+            {imageUrl ? <img src={imageUrl} alt={`Image`} class = "image" /> : <div>No image found</div>}
         </div>
     );
 };

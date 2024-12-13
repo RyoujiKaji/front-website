@@ -26,8 +26,8 @@ const ImageUploader = () => {
     try {
       // Преобразуем файл в Blob
       const blob = new Blob([selectedFile]);
-      const MAX_SIZE_OF_FILE = 70000;
-      if (blob.size >= MAX_SIZE_OF_FILE) {
+      const MAX_SIZE_OF_FILE = 65000;
+      if(blob.size>=MAX_SIZE_OF_FILE){
         throw new Error('Размер выбранного файла слишком большой');
       }
 
@@ -68,7 +68,8 @@ const ImageUploader = () => {
     <div>
       <input type="file" accept="image/jpeg" onChange={handleFileChange} />
       <button onClick={handleUpload}>Загрузить изображение</button>
-      <button onClick={handleReturnClick}>Вернуться</button>
+      <p><button onClick={handleReturnClick}>Вернуться</button></p>
+
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );

@@ -12,9 +12,11 @@ function Enter() {
 
     return (
     <>
+        <div class = "enter">
         <EnterForm />
         <p onClick={handleClick} style={{ color: 'blue' }}>Нет аккаунта? Зарегиcтрироваться</p>
         <Footer />
+        </div>
     </>
     )
 }

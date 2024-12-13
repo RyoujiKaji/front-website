@@ -12,6 +12,7 @@ import FixPrivateInf from './accounts/general/FixPrivateInf';
 import ImageUploader from './accounts/general/ImageUpLoader';
 import AllUserTable from './accounts/adminAccount/components/AllUsersTable';
 import FixRole from './accounts/adminAccount/components/FixRole';
+import './index.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

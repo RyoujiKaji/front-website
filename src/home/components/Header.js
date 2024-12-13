@@ -24,11 +24,11 @@ const Header = (props) => {
     }
 
     return (
-       <>
+       <div class = "header">
        <label>Игровой портал </label>
        <button onClick={handleClick} name='news'>Новости</button>
        <button onClick={handleClick} name='account'>Личный кабинет</button>
-       </>
+       </div>
     )
 };
 
