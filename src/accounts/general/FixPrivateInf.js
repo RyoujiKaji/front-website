@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppContext } from '../../context/DataContext';
 
 const FixPrivateInf = () => {
@@ -9,7 +9,10 @@ const FixPrivateInf = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [errorDate, setErrorDate] = useState('');
-    //const [id, setId] = useState('');
+    const { state } = useLocation();
+    const {id} = state;
+    //const [id, setId] = useState(props.id);
+    // setId(pid);
     //const [userRole, setUserRole] = useState('');
 
     //const oldName='', oldDate='', oldEmail='';
@@ -20,7 +23,7 @@ const FixPrivateInf = () => {
     //Навигация и контекст
     const navigate = useNavigate();
     const data = useAppContext().data
-    const id = data.id;
+    //const id = data.id;
     const userRole = data.role;
 
     //получение исходных данных
@@ -32,7 +35,7 @@ const FixPrivateInf = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ id })
+                    body: JSON.stringify({ id: id })
                 });
 
                 if (!response.ok) { // Проверьте статус ответа
@@ -42,8 +45,8 @@ const FixPrivateInf = () => {
                 const userData = await response.json(); // Добавьте await для разбора JSON
                 console.log(userData);
 
-                const partDate=userData.date.split('-');
-                const newFormatDate = partDate[2]+'.'+partDate[1]+'.'+partDate[0];
+                const partDate = userData.date.split('-');
+                const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
 
                 setName(userData.name);
                 setOldName(userData.name);
@@ -99,8 +102,8 @@ const FixPrivateInf = () => {
         //обработка запроса 
         try {
 
-            const partDate=date.split('-');
-            const newFormatDate = partDate[2]+'.'+partDate[1]+'.'+partDate[0];
+            const partDate = date.split('-');
+            const newFormatDate = partDate[2] + '.' + partDate[1] + '.' + partDate[0];
 
             if (oldName === name && oldDate === newFormatDate && oldEmail === email) {
                 throw new Error('Новые данные совпадают со старыми');
@@ -113,7 +116,7 @@ const FixPrivateInf = () => {
                             id: id
                         }; */
 
-            const response = await fetch('http://localhost:8080/users/fixprivateinfo', { 
+            const response = await fetch('http://localhost:8080/users/fixprivateinfo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
