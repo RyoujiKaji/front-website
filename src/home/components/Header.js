@@ -13,7 +13,7 @@ const Header = (props) => {
 
     const handleClick = (event) => {
         switch(event.target.name){
-            case 'news': navigate("/"); return;
+            case 'news': navigate("/allnews"); return;
             case 'account': {
                 let way='/'+props.role+'account'
                 navigate(way); 

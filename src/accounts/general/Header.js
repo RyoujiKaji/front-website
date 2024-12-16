@@ -9,7 +9,7 @@ const Header = (props) => {
 
     const handleClick = (event) => {
         switch(event.target.name){
-            case 'news': navigate("/"); return;
+            case 'news': navigate("/allnews"); return;
             case 'home': {
                 navigate('/home'); 
                 return;

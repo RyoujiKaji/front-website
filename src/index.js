@@ -13,6 +13,8 @@ import ImageUploader from './accounts/general/ImageUpLoader';
 import AllUserTable from './accounts/adminAccount/components/AllUsersTable';
 import FixRole from './accounts/adminAccount/components/FixRole';
 import './index.css';
+import EditNews from './news/components/EditNews';
+import AllNews from './news/AllNews';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -30,6 +32,8 @@ root.render(
                 <Route path='/changeAvatar' element={<ImageUploader />}/>
                 <Route path='/allUsersTable' element={<AllUserTable />}/>
                 <Route path='/changerole' element={<FixRole />}/>
+                <Route path='/editnews' element={<EditNews />}/>
+                <Route path='/allnews' element={<AllNews />}/>
             </Routes>
         </Router>
     </DataProvider>
