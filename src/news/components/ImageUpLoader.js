@@ -5,14 +5,15 @@ import { useAppContext } from '../../context/DataContext';
 const ImageUploader = forwardRef((props, ref) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState('');
-  const [id, setId] = useState(props.id);
-/*   const { state } = useLocation();
-  const { id } = state; */
+  /*   const { state } = useLocation();
+    const { id } = state; */
 
   useImperativeHandle(ref, () => ({
-    uploadImg: async () => {
+    uploadImg: async (newsId) => {
+
+      // console.log(props.id);
       if (!selectedFile) {
-        alert("Пожалуйста, выберите файл для загрузки.");
+        alert("Изображение не выбрано");
         return;
       }
 
@@ -27,7 +28,7 @@ const ImageUploader = forwardRef((props, ref) => {
         // Создаем FormData для отправки файла
         const formData = new FormData();
         formData.append('image', selectedFile);
-        formData.append('id', id);
+        formData.append('id', newsId.toString());
 
         // Отправляем запрос на сервер
         const response = await fetch('http://localhost:8080/news/editimg', {
@@ -44,9 +45,6 @@ const ImageUploader = forwardRef((props, ref) => {
         if (!result.success) {
           throw new Error(result.error);
         }
-
-        navigate(-1);
-        alert("Данные успешно изменены")
         //console.log('Успешно загружено:', result); //обработать ответ
       } catch (error) {
         setError(error.message);
@@ -55,9 +53,9 @@ const ImageUploader = forwardRef((props, ref) => {
   }));
 
   const navigate = useNavigate();
- // const data = useAppContext().data
+  // const data = useAppContext().data
   // const id = data.id;
- // const userRole = data.role;
+  // const userRole = data.role;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);

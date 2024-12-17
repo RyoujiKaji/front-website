@@ -14,8 +14,8 @@ const EditNews = () => {
      + (today.getMonth()+1).toString() + '.' + today.getFullYear().toString();
     const [date, setDate] = useState('');
 
-    console.log(newFormatDate);
-    console.log(date)
+   // console.log(newFormatDate);
+    //console.log(date)
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -108,7 +108,8 @@ const EditNews = () => {
                 throw new Error(userData.error);
             }
 
-            imgUploaderRef.current.uploadImg();
+            const newsId = userData.error;
+            imgUploaderRef.current.uploadImg(newsId);
 
             //setData(data);
             navigate(-1);
@@ -150,7 +151,7 @@ const EditNews = () => {
                 <p></p>
                 <div>
                     <label>Иллюстрация:</label>
-                    <ImageUploader ref={imgUploaderRef} id={id} />
+                    <ImageUploader ref={imgUploaderRef} />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <p></p>
