@@ -35,7 +35,7 @@ const AllNews = () => {
         fetchData();
     }, []);
 
-    const allNewsComponentsArray = news.map(oneNews => (
+    const allNewsComponentsArray = news.reverse().map(oneNews => (
         <News key={oneNews.id} id={oneNews.id} author={oneNews.author} date={oneNews.date} title={oneNews.title}
             content={oneNews.content} />
     ));

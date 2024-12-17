@@ -35,7 +35,7 @@ const Footer = () => {
     },);
 
     return (
-        <div class = "footer">
+        <div className = "footer">
             <p>
                 Посещений: {visits}
             </p>
